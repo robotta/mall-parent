@@ -10,6 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mall-facade-service</artifactId>
-
+    <name>服务接口</name>
 
 </project>
