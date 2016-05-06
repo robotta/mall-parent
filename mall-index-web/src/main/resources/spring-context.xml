@@ -8,6 +8,6 @@
         <property name="fileEncoding" value="utf-8"/>
     </bean>
     <import resource="spring-redis.xml"/>
-    <import resource="spring-shiro.xml"/>
+   <!-- <import resource="spring-shiro.xml"/>-->
     <import resource="dubbo-consumer.xml"/>
 </beans>
