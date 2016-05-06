@@ -20,6 +20,6 @@
 	<dubbo:protocol name="${dubbo.provider.protocol}" port="${dubbo.provider.port}" />
 
 	<!-- 自动包扫描注册服务 -->
-	<dubbo:annotation package="com.unionx.ylbs.dj.service"/>
+	<dubbo:annotation package="com.malaysia.service"/>
 
 </beans>

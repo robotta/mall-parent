@@ -73,7 +73,7 @@
 
 	<!-- 配置扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.unionx.ylbs.dj.dao" />
+		<property name="basePackage" value="com.malaysia.dao" />
 		<property name="annotationClass" value="org.springframework.stereotype.Repository"/>
 	</bean>
 

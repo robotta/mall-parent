@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malaysia.dao.index.TestMapper">
+    <resultMap id="BaseResultMap" type="com.malaysia.entity.Test">
+        <id column="Id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="className" jdbcType="VARCHAR" property="classname"/>
+    </resultMap>
+    <select id="getTestById" resultMap="BaseResultMap">
+        SELECT
+            *
+        FROM
+             test
+        WHERE            
+            Id = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <select id="findAllTest" resultMap="BaseResultMap">
+          SELECT * FROM test 
+    </select>
+    
+    <delete id="deleteTest">
+        DELETE
+        FROM
+             test
+        WHERE            
+            Id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="saveTest" parameterType="com.malaysia.entity.Test" >
+        INSERT INTO test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null" >
+                Id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="classname != null" >
+                className,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if> 
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if> 
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if> 
+            <if test="classname != null" >
+                #{classname,jdbcType=VARCHAR},
+            </if> 
+        </trim>
+    </insert>
+
+    <update id="updateTest" parameterType="com.malaysia.entity.Test" >
+        UPDATE test
+        <set>
+            <if test="id != null" >
+                Id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="classname != null" >
+                className = #{classname,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE 
+            Id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
