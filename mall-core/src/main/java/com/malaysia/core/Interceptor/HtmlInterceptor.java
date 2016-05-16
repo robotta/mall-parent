@@ -1,5 +1,7 @@
 package com.malaysia.core.Interceptor;
 
+import com.malaysia.core.Contants;
+import com.malaysia.core.web.RequestforWordUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,27 +14,32 @@ import java.util.HashMap;
  * Created by Administrator on 2016/5/6.
  */
 public class HtmlInterceptor implements HandlerInterceptor {
-    private static final HashMap<String,String> HTML_MAPPING = new HashMap<String,String>();
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String urlBorw= request.getServletPath();
-        String htmlUrl = HTML_MAPPING.get(urlBorw);
+        System.out.print(urlBorw);
+        String htmlUrl = Contants.HTML_MAPPING.get(urlBorw);
         if(null != htmlUrl && htmlUrl.length()>0) {
-            File file = new File(request.getSession().getServletContext().getRealPath("")+htmlUrl);
+            System.out.println(request.getSession().getServletContext().getRealPath(""));
+            File file = new File(request.getSession().getServletContext().getRealPath("")+"/"+htmlUrl);
             if(file.exists()) {
-                request.getRequestDispatcher(htmlUrl).forward(request,response);
+                request.setAttribute("createHtml",htmlUrl);
+                request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request,response);
                 return false;
             }else {
                 return true;
             }
         }
-        return false;
+        return true;
     }
 
+    @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
     }
 
+    @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
     }

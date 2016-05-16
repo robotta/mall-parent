@@ -1,8 +1,10 @@
 package com.malaysia.core.web;
 
+import com.malaysia.core.Contants;
 import freemarker.template.SimpleHash;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 
@@ -30,9 +32,8 @@ public class FreemarkerViewUtil extends FreeMarkerView {
         }
         // Grab the locale-specific version of the template.
         Locale locale = RequestContextUtils.getLocale(request);
-        if (null != request.getAttribute("savePath") && String.valueOf(request.getAttribute("savePath")).length() > 0) {
-            createHTML(getTemplate(locale),
-                    fmModel, String.valueOf(request.getAttribute("savePath")), response);
+        if (null != request.getAttribute("createHtml") && String.valueOf(request.getAttribute("createHtml")).length() > 0) {
+            createHTML(getTemplate(locale),fmModel, request, response);
         } else
         {
             processTemplate(getTemplate(locale), fmModel, response);
@@ -40,9 +41,12 @@ public class FreemarkerViewUtil extends FreeMarkerView {
 
     }
 
-    public void createHTML(Template template, SimpleHash model, String filePath, HttpServletResponse response)
+    public void createHTML(Template template, SimpleHash model, HttpServletRequest request, HttpServletResponse response)
             throws IOException, TemplateException, ServletException {
-        File htmlFile = new File(filePath);
+        String filePath = String.valueOf(request.getAttribute("createHtml"));
+        //String.valueOf(request.getAttribute("htmlPath");
+        String basePath = request.getSession().getServletContext().getRealPath("/");
+        File htmlFile = new File(basePath+filePath);
         if (!htmlFile.getParentFile().exists()) {
             htmlFile.getParentFile().mkdirs();
         }
@@ -54,5 +58,10 @@ public class FreemarkerViewUtil extends FreeMarkerView {
         template.process(model, out);
         out.flush();
         out.close();
+        Contants.HTML_MAPPING.put(request.getRequestURI(),filePath);
+        request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
+       // response.sendRedirect(RequestforWordUtils.forwordHtml(request));
     }
+
+
 }
