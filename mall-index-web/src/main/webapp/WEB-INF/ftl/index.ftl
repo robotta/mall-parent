@@ -23,7 +23,6 @@
     <tr>
         <td>用户名</td>
         <td>年龄</td>
-        <td>生日</td>
         <td>id</td>
         <td>操作</td>
     </tr>
@@ -31,9 +30,6 @@
     <tr>
         <td>${user.name}</td>
         <td>${user.age}</td>
-        <td>
-        ${user.birthday?string("yyyy-MM-dd HH:mm:ss")}
-        </td>
         <td>${user.id}</td>
         <td><a href="http://localhost/htmlpage/DelUser.do?id=${user.id}">删除</a></td>
     </tr>
