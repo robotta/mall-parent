@@ -1,4 +1,4 @@
-package com.malaysia.test;
+package com.malaysia.main;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 public class MainRun {
     public static void main(String args[]) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "spring/application-context.xml");
+                "application-context.xml");
         context.start();// 服务开启
         try {
             System.in.read();

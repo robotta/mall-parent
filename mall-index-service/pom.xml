@@ -10,7 +10,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mall-index-service</artifactId>
-    <name>首页接口实现</name>
+    <name>mall-service</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.international</groupId>
+            <artifactId>mall-facade-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <resources>

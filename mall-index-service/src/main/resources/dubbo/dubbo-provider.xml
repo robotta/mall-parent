@@ -20,6 +20,7 @@
 	<dubbo:protocol name="${dubbo.provider.protocol}" port="${dubbo.provider.port}" />
 
 	<!-- 自动包扫描注册服务 -->
-	<dubbo:annotation package="com.malaysia.service"/>
+	<!--<dubbo:annotation package="com.malaysia.service"/>-->
+	<!--自动扫描存在无法注入spring 事物，改为配置-->
 
 </beans>
