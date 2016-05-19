@@ -33,7 +33,7 @@ public class TestController {
         List<User> users = new ArrayList<User>();
         users.add(user);
         model.addAttribute("users",users);
-        request.setAttribute("createHtml","index/test.html");
+        request.setAttribute("createHtml","index/test");
         return "index";
 
     }
