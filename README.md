@@ -13,7 +13,7 @@
 # parent pom 包依赖管理，修改成包依赖
 
 
-#freemaker 取值的问题，取决于controller 写的是model  还是 modelMap
+# freemaker 取值的问题，取决于controller 写的是model  还是 modelMap
 1、model  如果为model 那么在则可以直接写 model.setAttribute 的属性名称
 
 2、modelMap 如果为modelMap的话，他的值则为Key,Value 所以在前端取值的时候，需要像map一样 取Key
@@ -26,3 +26,8 @@
     方法定义：public String getAllList(@ModelAttribute("myList") ModelMap modelMap) {}
     上面方法，我设置modelMap 名称为 myList 那么他的key为 MyList
     取值为：myList[users]
+
+
+# SpringMvc 国际化，静态页面处理问题
+    1、目前，有存在一些静态纯静态页面需要静态化问题，各地区区域不同，需要创界不同区域的静态化页面
+    2、给予解决办法怎为 Locale
