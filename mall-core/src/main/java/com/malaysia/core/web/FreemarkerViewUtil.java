@@ -4,7 +4,8 @@ import com.malaysia.core.Contants;
 import freemarker.template.SimpleHash;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.springframework.core.env.SystemEnvironmentPropertySource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 
@@ -19,7 +20,7 @@ import java.util.Map;
  * Created by Administrator on 2016/5/6.
  */
 public class FreemarkerViewUtil extends FreeMarkerView {
-
+    private Locale locale = null;
     @Override
     protected void doRender(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -31,7 +32,7 @@ public class FreemarkerViewUtil extends FreeMarkerView {
             logger.debug("Rendering FreeMarker template [" + getUrl() + "] in FreeMarkerView '" + getBeanName() + "'");
         }
         // Grab the locale-specific version of the template.
-        Locale locale = RequestContextUtils.getLocale(request);
+        locale = RequestContextUtils.getLocale(request);
         if (null != request.getAttribute("createHtml") && String.valueOf(request.getAttribute("createHtml")).length() > 0) {
             createHTML(getTemplate(locale),fmModel, request, response);
         } else
@@ -44,9 +45,9 @@ public class FreemarkerViewUtil extends FreeMarkerView {
     public void createHTML(Template template, SimpleHash model, HttpServletRequest request, HttpServletResponse response)
             throws IOException, TemplateException, ServletException {
         String filePath = String.valueOf(request.getAttribute("createHtml"));
-        //String.valueOf(request.getAttribute("htmlPath");
-        String basePath = request.getSession().getServletContext().getRealPath("/");
-        File htmlFile = new File(basePath+filePath);
+        String basePath = request.getSession().getServletContext().getRealPath("/views");
+        filePath = "/"+filePath+"_"+locale+".html";
+        File htmlFile = new File(basePath+filePath); // 创建区域文件
         if (!htmlFile.getParentFile().exists()) {
             htmlFile.getParentFile().mkdirs();
         }
@@ -58,10 +59,9 @@ public class FreemarkerViewUtil extends FreeMarkerView {
         template.process(model, out);
         out.flush();
         out.close();
-        Contants.HTML_MAPPING.put(request.getRequestURI(),filePath);
-        request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
-       // response.sendRedirect(RequestforWordUtils.forwordHtml(request));
+        Contants.HTML_MAPPING.put(request.getRequestURI()+"_"+locale,filePath);
+        response.sendRedirect(Contants.default_parent_html+filePath);
+        //request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
     }
-
 
 }

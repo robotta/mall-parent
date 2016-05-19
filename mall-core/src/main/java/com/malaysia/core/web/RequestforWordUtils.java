@@ -15,7 +15,9 @@ public class RequestforWordUtils {
      */
     public static String forwordHtml(HttpServletRequest request) {
         String html = String.valueOf(request.getAttribute("createHtml"));
-        return html.substring(html.indexOf("/")+1);
+        html = html.substring(html.indexOf("/")+1);
+
+        return html;
     }
 
 }
