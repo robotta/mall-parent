@@ -27,12 +27,12 @@ public class HtmlInterceptor implements HandlerInterceptor {
         String urlBorw= request.getServletPath()+"_"+locale;
         String htmlUrl = Contants.HTML_MAPPING.get(urlBorw);
         if(null != htmlUrl && htmlUrl.length()>0) {
-            String langPath = request.getSession().getServletContext().getRealPath("/views/");
+            String langPath = request.getSession().getServletContext().getRealPath("/");
             File file = new File(langPath+"/"+htmlUrl);
             if(file.exists()) {
-                //request.setAttribute("createHtml",htmlUrl);
-                //request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request,response);
-                response.sendRedirect(Contants.default_parent_html+htmlUrl);
+                request.setAttribute("createHtml",htmlUrl);
+                request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request,response);
+                //response.sendRedirect(Contants.default_parent_html+htmlUrl);
                 return false;
             }else {
                 return true;

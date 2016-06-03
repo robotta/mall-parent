@@ -45,8 +45,7 @@ public class FreemarkerViewUtil extends FreeMarkerView {
     public void createHTML(Template template, SimpleHash model, HttpServletRequest request, HttpServletResponse response)
             throws IOException, TemplateException, ServletException {
         String filePath = String.valueOf(request.getAttribute("createHtml"));
-        String basePath = request.getSession().getServletContext().getRealPath("/views");
-        filePath = "/"+filePath+"_"+locale+".html";
+        String basePath = request.getSession().getServletContext().getRealPath("/");
         File htmlFile = new File(basePath+filePath); // 创建区域文件
         if (!htmlFile.getParentFile().exists()) {
             htmlFile.getParentFile().mkdirs();
@@ -60,8 +59,8 @@ public class FreemarkerViewUtil extends FreeMarkerView {
         out.flush();
         out.close();
         Contants.HTML_MAPPING.put(request.getRequestURI()+"_"+locale,filePath);
-        response.sendRedirect(Contants.default_parent_html+filePath);
-        //request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
+        //response.sendRedirect(Contants.default_parent_html+filePath);
+        request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
     }
 
 }
