@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>用户列表</title>
-
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -22,22 +21,23 @@
 <p><a href="/language.htm?language=en_th">泰文</a></p>
 <p><a href="/language.htm?language=en_id">印尼文</a></p>
 <p><a href="/language.htm?language=en_my">马来文</a></p>
+<p><a href="/language.htm?language=zh_cn">中文</a></p>
 <@spring.message code="hello" />
 <hr/>
 <a href="#">用户列表</a><br/>
 <table border="1">
     <tr>
-        <td>用户名</td>
-        <td>年龄</td>
-        <td>id</td>
-        <td>操作</td>
+        <td><@spring.message code="name"/></td>
+        <td><@spring.message code="age"/></td>
+        <td><@spring.message code="code"/></td>
+        <td><@spring.message code="operate"/></td>
     </tr>
 <#list users as user>
     <tr>
         <td>${user.name}</td>
         <td>${user.age}</td>
         <td>${user.id}</td>
-        <td><a href="http://localhost/htmlpage/DelUser.do?id=${user.id}">删除</a></td>
+        <td><a href="http://localhost/htmlpage/DelUser.do?id=${user.id}">delete</a></td>
     </tr>
 </#list>
 

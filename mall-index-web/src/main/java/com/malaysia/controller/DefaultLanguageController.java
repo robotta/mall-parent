@@ -26,10 +26,10 @@ public class DefaultLanguageController {
      * @return
      */
     @RequestMapping("/language")
-    public ModelAndView language(HttpServletRequest request, HttpServletResponse response, String language) {
+    public ModelAndView language(HttpServletRequest request, HttpServletResponse response, String language, String red) {
         language=language.toLowerCase();
         if(language==null||language.equals("")){
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/"+red);
         }else{
             if(language.equals("zh_cn")){
                 localeResolver.setLocale(request, response, Locale.CHINA );
@@ -43,7 +43,7 @@ public class DefaultLanguageController {
                 localeResolver.setLocale(request, response,LangeuageLocale.MALAYSIA);
             }
         }
-        return new ModelAndView("redirect:/index/test.htm");
+        return new ModelAndView("redirect:"+red);
     }
 
 

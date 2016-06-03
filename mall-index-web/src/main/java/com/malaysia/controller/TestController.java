@@ -1,5 +1,6 @@
 package com.malaysia.controller;
 
+import com.malaysia.core.web.RequestforWordUtils;
 import com.malaysia.entity.User;
 import com.malaysia.util.TemplateConfigUtils;
 import freemarker.template.Template;
@@ -9,11 +10,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Administrator on 2016/5/6.
@@ -33,9 +36,15 @@ public class TestController {
         List<User> users = new ArrayList<User>();
         users.add(user);
         model.addAttribute("users",users);
-        request.setAttribute("createHtml","index/test");
+        RequestforWordUtils.setPagckageAndResultFileName(request,"index","test.html");
         return "index";
 
     }
 
+
+    @RequestMapping("/tmall")
+    public String tmall(HttpServletRequest request) throws Exception {
+        request.setAttribute("createHtml","index/tmall");
+        return "tmall";
+    }
 }
