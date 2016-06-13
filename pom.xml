@@ -13,6 +13,10 @@
         <module>mall-index-web</module>
         <module>mall-index-service</module>
         <module>mall-core</module>
+        <module>staticPage</module>
+        <module>mongodb</module>
+        <module>system-log</module>
+        <module>mall-cache</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -46,6 +50,7 @@
         <thumbnailator_version>0.4.8</thumbnailator_version>
         <org_freemarker_version>2.3.21</org_freemarker_version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring_data_mongo_version>1.6.1.RELEASE</spring_data_mongo_version>
     </properties>
         <dependencies>
             <!--spring-->
@@ -305,6 +310,18 @@
                 <version>${thumbnailator_version}</version>
             </dependency>
             <!--END-->
+
+            <dependency>
+                <groupId>com.rhcloud.mongodb</groupId>
+                <artifactId>mongodb-persistence-api</artifactId>
+                <version>0.2.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>${spring_data_mongo_version}</version>
+            </dependency>
         </dependencies>
 
     <build>

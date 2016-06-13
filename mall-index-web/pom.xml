@@ -20,6 +20,21 @@
             <artifactId>mall-facade-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.international</groupId>
+            <artifactId>mongodb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.international</groupId>
+            <artifactId>mall-cache</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.international</groupId>
+            <artifactId>staticPage</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>mall-index-web</finalName>

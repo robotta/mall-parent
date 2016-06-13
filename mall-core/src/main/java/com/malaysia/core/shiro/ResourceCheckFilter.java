@@ -20,11 +20,22 @@ public class ResourceCheckFilter extends AccessControlFilter {
         return subject.isPermitted(url);
     }
 
+    /**
+     * 规则匹配不上，执行
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest hRequest = (HttpServletRequest) request;
         HttpServletResponse hResponse = (HttpServletResponse) response;
         hResponse.sendRedirect(hRequest.getContextPath()+"/error.jsp");
+        /**
+         * 执行当前登录用户所属的授权页面
+         * response.sendRedirect();
+         */
         return false;
     }
 

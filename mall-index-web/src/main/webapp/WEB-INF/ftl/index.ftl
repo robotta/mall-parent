@@ -16,7 +16,6 @@
 </head>
 
 <body>
-<#include "header.ftl" parse=true encoding="utf-8">
 <p><a href="/language.htm?language=en_us">英文</a></p>
 <p><a href="/language.htm?language=en_th">泰文</a></p>
 <p><a href="/language.htm?language=en_id">印尼文</a></p>
@@ -43,6 +42,5 @@
 
 </table>
 <hr/>
-<#include "footer.ftl" parse=true encoding="utf-8">
 </body>
 </html>

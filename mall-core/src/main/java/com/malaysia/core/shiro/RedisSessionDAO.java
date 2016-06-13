@@ -28,7 +28,7 @@ public class RedisSessionDAO extends AbstractSessionDAO {
 	 */
 	private String keyPrefix = "shiro_redis_session:";
 	
-//	@Override
+	@Override
 	public void update(Session session) throws UnknownSessionException {
 		this.saveSession(session);
 	}
@@ -50,7 +50,7 @@ public class RedisSessionDAO extends AbstractSessionDAO {
 		this.redisManager.set(key, value, redisManager.getExpire());
 	}
 
-//	@Override
+	@Override
 	public void delete(Session session) {
 		if(session == null || session.getId() == null){
 			logger.error("session or session id is null");
@@ -60,7 +60,7 @@ public class RedisSessionDAO extends AbstractSessionDAO {
 
 	}
 
-//	@Override
+	@Override
 	public Collection<Session> getActiveSessions() {
 		Set<Session> sessions = new HashSet<Session>();
 		Set<byte[]> keys = redisManager.keys(this.keyPrefix + "*");
