@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 /**
- * Created by Administrator on 2016/5/16.
+ *
+ * 静态页面生成
+ * Created by zhaoyun on 2016/5/16.
  */
 public class RequestforWordUtils {
     /**

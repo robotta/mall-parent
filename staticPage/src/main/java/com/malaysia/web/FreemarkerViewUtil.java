@@ -15,7 +15,8 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/5/6.
+ * 静态化页面生成
+ * Created by zhaoyun on 2016/5/6.
  */
 public class FreemarkerViewUtil extends FreeMarkerView {
     private Locale locale = null;
