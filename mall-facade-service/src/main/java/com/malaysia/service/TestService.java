@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface TestService {
     public List<Test> findByTestList();
+
+    public Test getMemberById(Integer id);
 }
