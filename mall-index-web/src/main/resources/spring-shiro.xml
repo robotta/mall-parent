@@ -36,7 +36,7 @@
                 /skin/** = anon
                 /login = anon
                 /error.jsp = anon
-                /** = resourceCheckFilter
+                /admin = resourceCheckFilter
             </value>
         </property>
     </bean>

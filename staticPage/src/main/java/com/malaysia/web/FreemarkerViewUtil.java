@@ -58,8 +58,8 @@ public class FreemarkerViewUtil extends FreeMarkerView {
         out.flush();
         out.close();
         Contants.HTML_MAPPING.put(request.getRequestURI()+"_"+locale,filePath);
-        //response.sendRedirect(Contants.default_parent_html+filePath);
-        request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
+        response.sendRedirect(Contants.default_parent_html+filePath);
+        //request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
     }
 
 }

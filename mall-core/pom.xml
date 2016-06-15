@@ -12,5 +12,11 @@
     <artifactId>mall-core</artifactId>
     <name>mall-core</name>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.international</groupId>
+            <artifactId>staticPage</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -11,6 +11,12 @@
         <property name="fileEncoding" value="utf-8"/>
     </bean>
 
+    <bean id="cookieLocaleResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieMaxAge" value="604800"/>
+        <property name="defaultLocale" value="zh_CN"/>
+        <property name="cookieName" value="Language"></property>
+    </bean>
+
     <import resource="spring-redis.xml"/>
     <import resource="spring-shiro.xml"/>
     <import resource="dubbo-consumer.xml"/>

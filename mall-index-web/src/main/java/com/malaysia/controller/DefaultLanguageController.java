@@ -17,7 +17,8 @@ import java.util.Locale;
 @Controller
 public class DefaultLanguageController {
 
-    @Autowired CookieLocaleResolver localeResolver;
+    @Autowired
+    private CookieLocaleResolver cookieLocaleResolver;
     /**
      * set Locale
      * @author zhaoyun
@@ -32,19 +33,18 @@ public class DefaultLanguageController {
             return new ModelAndView("redirect:/"+red);
         }else{
             if(language.equals("zh_cn")){
-                localeResolver.setLocale(request, response, Locale.CHINA );
+                cookieLocaleResolver.setLocale(request, response, Locale.CHINA );
             }else if(language.equals("en_us")){
-                localeResolver.setLocale(request, response, Locale.ENGLISH );
+                cookieLocaleResolver.setLocale(request, response, Locale.ENGLISH );
             }else if(language.equals("en_id")){
-                localeResolver.setLocale(request, response, LangeuageLocale.YINNI);
+                cookieLocaleResolver.setLocale(request, response, LangeuageLocale.YINNI);
             }else if(language.equals("en_th")){
-                localeResolver.setLocale(request, response, LangeuageLocale.TAIGUO);
+                cookieLocaleResolver.setLocale(request, response, LangeuageLocale.TAIGUO);
             }else if(language.equals("en_my")){
-                localeResolver.setLocale(request, response,LangeuageLocale.MALAYSIA);
+                cookieLocaleResolver.setLocale(request, response,LangeuageLocale.MALAYSIA);
             }
         }
         return new ModelAndView("redirect:"+red);
     }
-
 
 }

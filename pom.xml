@@ -17,6 +17,7 @@
         <module>mongodb</module>
         <module>system-log</module>
         <module>mall-cache</module>
+        <module>mall-util</module>
     </modules>
     <packaging>pom</packaging>
 
