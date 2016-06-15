@@ -1,7 +1,6 @@
 package com.malaysia.core.Interceptor;
 
-import com.malaysia.core.Contants;
-import com.malaysia.web.RequestforWordUtils;
+import com.malaysia.util.Contants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
