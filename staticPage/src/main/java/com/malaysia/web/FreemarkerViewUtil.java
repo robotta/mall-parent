@@ -1,6 +1,6 @@
 package com.malaysia.web;
 
-import com.malaysia.core.Contants;
+import com.malaysia.util.Contants;
 import freemarker.template.SimpleHash;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -45,7 +45,7 @@ public class FreemarkerViewUtil extends FreeMarkerView {
             throws IOException, TemplateException, ServletException {
         String filePath = String.valueOf(request.getAttribute("createHtml"));
         String basePath = request.getSession().getServletContext().getRealPath("/");
-        File htmlFile = new File(basePath+filePath); // 创建区域文件
+        File htmlFile = new File(basePath+Contants.default_parent_html+filePath); // 创建区域文件
         if (!htmlFile.getParentFile().exists()) {
             htmlFile.getParentFile().mkdirs();
         }
@@ -62,4 +62,13 @@ public class FreemarkerViewUtil extends FreeMarkerView {
         //request.getRequestDispatcher(RequestforWordUtils.forwordHtml(request)).forward(request, response);
     }
 
+
+    /**
+     * 根据不同语言生成不同的模板文件
+     * @author zhaoyun
+     * Created by zhaoyun on 2016/06/12
+     */
+    public void createFileForLanguage(Template template, SimpleHash model, HttpServletRequest request, HttpServletResponse response) {
+
+    }
 }
