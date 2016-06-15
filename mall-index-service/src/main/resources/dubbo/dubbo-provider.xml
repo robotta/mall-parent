@@ -11,10 +11,10 @@
 	<dubbo:application name="${dubbo.applicationName}" />
 
 	<!-- dubbo接口去除注册中心，采用直连的方式  -->
-    <dubbo:registry address="N/A" />
+    <!--<dubbo:registry address="N/A" />-->
 
 	 <!-- 使用zookeeper注册中心暴露服务地址 -->
- 	<!--<dubbo:registry protocol="${dubbo.provider.registry.protocol}" address="${dubbo.provider.registry.address}" />-->
+ 	<dubbo:registry protocol="${dubbo.provider.registry.protocol}" address="${dubbo.provider.registry.address}" />
 
 	<!-- 	用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="${dubbo.provider.protocol}" port="${dubbo.provider.port}" />

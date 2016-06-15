@@ -3,13 +3,14 @@ package com.malaysia.dao.index;
 import com.malaysia.entity.Test;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/5/6.
  */
-@Component
+@Repository
 public interface TestMapper {
     /**
      * 根据主键查询
